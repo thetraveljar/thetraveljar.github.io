@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>signal, noise &amp; beyond</title>
+<meta name="description" content="Data science, photography, writing, and small useful tools.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gabarito:wght@500;600;700&family=Karla:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --sky-top:#C6CCEE;
+    --sky-mid:#E4E1F2;
+    --sky-bottom:#F4DCE0;
+    --sun:#F2C96B;
+    --ink:#332E52;
+    --ink-soft:#6F688F;
+    --cheek:#E8899A;
+    --display:"Gabarito",ui-rounded,"Segoe UI Rounded",system-ui,sans-serif;
+    --body:"Karla",system-ui,-apple-system,sans-serif;
+  }
+
+  *{box-sizing:border-box;}
+
+  html,body{height:100%;}
+
+  body{
+    margin:0;
+    font-family:var(--body);
+    color:var(--ink);
+    background:linear-gradient(180deg,
+      var(--sky-top) 0%,
+      var(--sky-mid) 46%,
+      var(--sky-bottom) 100%);
+    background-attachment:fixed;
+    display:flex;
+    flex-direction:column;
+    min-height:100svh;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  /* Film grain — ties the flat wash to the photography side of the site. */
+  body::after{
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    z-index:2;
+    opacity:.05;
+    mix-blend-mode:multiply;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  .wordmark{
+    position:relative;
+    z-index:3;
+    padding:1.9rem 1.75rem 0;
+    font-family:var(--display);
+    font-weight:500;
+    font-size:.94rem;
+    letter-spacing:.01em;
+    color:var(--ink-soft);
+  }
+
+  main{
+    position:relative;
+    z-index:3;
+    flex:1;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:2.1rem;
+    padding:2rem 1.5rem 1rem;
+    text-align:center;
+  }
+
+  .face{
+    width:min(62vw,300px);
+    height:auto;
+    display:block;
+    filter:drop-shadow(0 18px 34px rgba(80,66,130,.16));
+  }
+
+  h1{
+    font-family:var(--display);
+    font-weight:700;
+    font-size:clamp(3rem,13vw,5.75rem);
+    line-height:.94;
+    letter-spacing:-.022em;
+    margin:0;
+  }
+
+  .tagline{
+    margin:-.9rem 0 0;
+    font-size:1.0625rem;
+    color:var(--ink-soft);
+    max-width:30ch;
+    line-height:1.5;
+  }
+
+  nav{
+    position:relative;
+    z-index:3;
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:.4rem 2.15rem;
+    padding:1.25rem 1.5rem 3.1rem;
+  }
+
+  nav a{
+    font-family:var(--display);
+    font-weight:500;
+    font-size:1.0625rem;
+    color:var(--ink);
+    text-decoration:none;
+    padding:.45rem .1rem;
+    border-bottom:2px solid transparent;
+    transition:border-color .18s ease,color .18s ease;
+  }
+
+  nav a:hover,
+  nav a:focus-visible{
+    border-bottom-color:var(--sun);
+    color:var(--ink);
+  }
+
+  a:focus-visible{
+    outline:2px solid var(--ink);
+    outline-offset:4px;
+    border-radius:3px;
+  }
+
+  /* ---- the one orchestrated moment ---- */
+
+  .face{
+    animation:rise .95s cubic-bezier(.2,.75,.3,1) both;
+  }
+
+  h1{animation:lift .7s ease-out .42s both;}
+  .tagline{animation:lift .7s ease-out .56s both;}
+  nav{animation:lift .7s ease-out .68s both;}
+
+  @keyframes rise{
+    from{opacity:0;transform:translateY(16px) scale(.93);}
+    to{opacity:1;transform:none;}
+  }
+  @keyframes lift{
+    from{opacity:0;transform:translateY(10px);}
+    to{opacity:1;transform:none;}
+  }
+
+  #smile{
+    stroke-dasharray:180;
+    stroke-dashoffset:180;
+    animation:draw .8s cubic-bezier(.4,.1,.2,1) .5s both;
+  }
+  @keyframes draw{to{stroke-dashoffset:0;}}
+
+  .eye{
+    transform-box:fill-box;
+    transform-origin:center;
+    animation:blink 7s ease-in-out 2.6s infinite;
+  }
+  @keyframes blink{
+    0%,92%,100%{transform:scaleY(1);}
+    95.5%{transform:scaleY(.08);}
+  }
+
+  @media (prefers-reduced-motion:reduce){
+    .face,h1,.tagline,nav,#smile,.eye{animation:none;}
+    #smile{stroke-dashoffset:0;}
+  }
+
+  @media (max-width:430px){
+    nav{gap:.3rem 1.4rem;}
+    .wordmark{padding:1.5rem 1.25rem 0;font-size:.875rem;}
+  }
+</style>
+</head>
+<body>
+
+  <div class="wordmark">signal, noise &amp; beyond</div>
+
+  <main>
+    <svg class="face" viewBox="0 0 320 320" role="img"
+         aria-label="A big smiling face" xmlns="http://www.w3.org/2000/svg">
+      <!-- Slightly irregular circle so it reads hand-drawn, not geometric. -->
+      <path d="M160 18 C239 18 302 80 302 159 C302 240 237 302 159 302
+               C80 302 18 238 18 157 C18 78 83 18 160 18 Z"
+            fill="#F2C96B"/>
+      <ellipse cx="86" cy="198" rx="19" ry="14" fill="#E8899A" opacity=".3"/>
+      <ellipse cx="234" cy="198" rx="19" ry="14" fill="#E8899A" opacity=".3"/>
+      <ellipse class="eye" cx="117" cy="136" rx="12" ry="15.5" fill="#332E52"/>
+      <ellipse class="eye" cx="203" cy="136" rx="12" ry="15.5" fill="#332E52"/>
+      <path id="smile" d="M104 190 Q160 250 216 190"
+            fill="none" stroke="#332E52" stroke-width="14" stroke-linecap="round"/>
+    </svg>
+
+    <h1>WELCOME!</h1>
+
+    <p class="tagline">Come in, have a look around.</p>
+  </main>
+
+  <nav>
+    <a href="/patterns/">patterns</a>
+    <a href="/grain/">grain</a>
+    <a href="/musings/">musings</a>
+    <a href="/minions/">minions</a>
+  </nav>
+
+</body>
+</html>

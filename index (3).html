@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>patterns — signal, noise &amp; beyond</title>
+<meta name="description" content="Data science and analytics work.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gabarito:wght@500;600;700&family=Karla:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/site.css">
+</head>
+<body>
+
+<div class="shell">
+
+  <header class="masthead">
+    <a class="home" href="../">
+      <svg viewBox="0 0 320 320" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="160" cy="160" r="146" fill="#F2C96B"/>
+        <circle cx="117" cy="134" r="15" fill="#332E52"/>
+        <circle cx="203" cy="134" r="15" fill="#332E52"/>
+        <path d="M104 190 Q160 250 216 190" fill="none" stroke="#332E52"
+              stroke-width="18" stroke-linecap="round"/>
+      </svg>
+      signal, noise &amp; beyond
+    </a>
+    <nav class="sections">
+      <a href="../patterns/" aria-current="page">patterns</a>
+      <a href="../grain/">grain</a>
+      <a href="../musings/">musings</a>
+      <a href="/minions/">minions</a>
+    </nav>
+  </header>
+
+  <div class="opener">
+    <h1>Patterns</h1>
+    <p>
+      Fifteen years of finding the shape in messy data — mostly customer
+      behaviour, mostly at scale, mostly under a deadline.
+    </p>
+  </div>
+
+  <main>
+
+    <!-- Copy one <li> block per project. Keep the shape:
+         title → what the problem was → what you built → what changed. -->
+    <ul class="work">
+
+      <li>
+        <h2>Predicting churn before anyone had a bad feeling</h2>
+        <p class="frame">
+          Renewal risk was being flagged by account managers on instinct,
+          usually about three weeks too late to act on. The signals were all
+          sitting in product telemetry, support history, and billing — just
+          never in the same place.
+        </p>
+        <p class="frame">
+          Built a gradient-boosted model over a unified feature store, scored
+          the full book weekly, and pushed the top risk drivers back into the
+          tools the team already used rather than a separate dashboard.
+        </p>
+        <p class="outcome">
+          Risk visible a full quarter earlier, with a named reason attached to
+          every flag.
+        </p>
+        <p class="stack">Python · Snowflake · dbt · Tableau</p>
+      </li>
+
+      <li>
+        <h2>A health score people actually trusted</h2>
+        <p class="frame">
+          The previous score was a weighted average nobody could explain, so
+          nobody used it. Trust was the real problem, not accuracy.
+        </p>
+        <p class="frame">
+          Rebuilt it as two legible dimensions instead of one opaque number,
+          with every input traceable to a definition the business had signed
+          off on. Shipped a simulator so stakeholders could move the weights
+          themselves and see what happened.
+        </p>
+        <p class="outcome">
+          Adoption went from occasional to default, largely because people
+          could argue with it.
+        </p>
+        <p class="stack">Python · Excel · Snowflake</p>
+      </li>
+
+      <li>
+        <h2>One definition of “active customer”</h2>
+        <p class="frame">
+          Four teams, four numbers, every meeting spent reconciling them
+          instead of deciding anything.
+        </p>
+        <p class="frame">
+          Moved core metrics into a governed semantic layer so the definition
+          lived in one place and every downstream report inherited it.
+          Unglamorous work; the highest-leverage thing on the roadmap.
+        </p>
+        <p class="outcome">
+          Reconciliation meetings stopped happening.
+        </p>
+        <p class="stack">dbt · Snowflake · Tableau</p>
+      </li>
+
+    </ul>
+
+  </main>
+
+  <footer class="foot">
+    <a href="../">Back to the front door</a>
+  </footer>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,278 @@
+/* signal, noise & beyond — shared styles for the section pages.
+   The landing page (/index.html) is deliberately self-contained and does
+   not use this file; it has its own sky-gradient treatment. */
+
+:root{
+  --paper:#F8F7FC;
+  --ink:#332E52;
+  --ink-soft:#6F688F;
+  --ink-faint:#9A94B5;
+  --sun:#F2C96B;
+  --periwinkle:#C6CCEE;
+  --blush:#F4DCE0;
+  --line:#E4E2F0;
+  --display:"Gabarito",ui-rounded,"Segoe UI Rounded",system-ui,sans-serif;
+  --body:"Karla",system-ui,-apple-system,sans-serif;
+  --measure:68ch;
+}
+
+*{box-sizing:border-box;}
+
+html{scroll-behavior:smooth;}
+
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--body);
+  font-size:1.0625rem;
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+}
+
+body::after{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:50;
+  opacity:.04;
+  mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.shell{
+  max-width:60rem;
+  margin:0 auto;
+  padding:0 1.6rem;
+}
+
+/* ---------- masthead ---------- */
+
+.masthead{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:baseline;
+  justify-content:space-between;
+  gap:.9rem 2rem;
+  padding:1.9rem 0 1.6rem;
+  border-bottom:1px solid var(--line);
+}
+
+.home{
+  display:inline-flex;
+  align-items:center;
+  gap:.6rem;
+  font-family:var(--display);
+  font-weight:600;
+  font-size:1rem;
+  color:var(--ink);
+  text-decoration:none;
+}
+
+.home svg{width:22px;height:22px;flex:none;}
+
+.sections{
+  display:flex;
+  flex-wrap:wrap;
+  gap:.3rem 1.55rem;
+}
+
+.sections a{
+  font-family:var(--display);
+  font-weight:500;
+  font-size:.9875rem;
+  color:var(--ink-soft);
+  text-decoration:none;
+  padding-bottom:.18rem;
+  border-bottom:2px solid transparent;
+  transition:color .18s ease,border-color .18s ease;
+}
+
+.sections a:hover{color:var(--ink);border-bottom-color:var(--periwinkle);}
+.sections a[aria-current="page"]{color:var(--ink);border-bottom-color:var(--sun);}
+
+/* ---------- page opener ---------- */
+
+.opener{padding:3.6rem 0 2.9rem;}
+
+.opener h1{
+  font-family:var(--display);
+  font-weight:700;
+  font-size:clamp(2.35rem,6.5vw,3.4rem);
+  line-height:1.04;
+  letter-spacing:-.02em;
+  margin:0 0 .85rem;
+}
+
+.opener p{
+  margin:0;
+  max-width:52ch;
+  font-size:1.1rem;
+  color:var(--ink-soft);
+}
+
+main{padding-bottom:5rem;}
+
+/* ---------- project list (patterns) ---------- */
+
+.work{
+  list-style:none;
+  margin:0;
+  padding:0;
+  border-top:1px solid var(--line);
+}
+
+.work > li{
+  padding:2.5rem 0;
+  border-bottom:1px solid var(--line);
+}
+
+.work h2{
+  font-family:var(--display);
+  font-weight:600;
+  font-size:1.5rem;
+  line-height:1.24;
+  letter-spacing:-.012em;
+  margin:0 0 .55rem;
+}
+
+.work .frame{
+  margin:0 0 1.05rem;
+  color:var(--ink-soft);
+  max-width:var(--measure);
+}
+
+.work .frame:last-child{margin-bottom:0;}
+
+.outcome{
+  margin:0;
+  padding-left:1.1rem;
+  border-left:3px solid var(--sun);
+  font-weight:500;
+  max-width:var(--measure);
+}
+
+.stack{
+  margin:1.1rem 0 0;
+  font-size:.9rem;
+  color:var(--ink-faint);
+}
+
+/* ---------- photo grid (grain) ---------- */
+
+.gallery{
+  columns:3 210px;
+  column-gap:1.15rem;
+}
+
+.gallery figure{
+  margin:0 0 1.15rem;
+  break-inside:avoid;
+}
+
+.gallery img{
+  width:100%;
+  height:auto;
+  display:block;
+  border-radius:3px;
+}
+
+.gallery figcaption{
+  margin-top:.5rem;
+  font-size:.875rem;
+  color:var(--ink-faint);
+}
+
+/* Stand-in tiles — delete these once real photographs go in. */
+.placeholder{
+  aspect-ratio:var(--ratio,4/5);
+  border-radius:3px;
+  background:linear-gradient(150deg,var(--periwinkle),var(--blush));
+}
+
+/* ---------- tool list (minions) ---------- */
+
+.tools{
+  list-style:none;
+  margin:0;
+  padding:0;
+  display:grid;
+  gap:1.15rem;
+}
+
+.tools li{
+  border:1px solid var(--line);
+  border-radius:6px;
+  background:#fff;
+}
+
+.tools a{
+  display:block;
+  padding:1.5rem 1.6rem;
+  text-decoration:none;
+  color:inherit;
+  border-radius:6px;
+  transition:border-color .18s ease;
+}
+
+.tools h2{
+  font-family:var(--display);
+  font-weight:600;
+  font-size:1.2rem;
+  margin:0 0 .3rem;
+}
+
+.tools p{margin:0;color:var(--ink-soft);font-size:.99rem;max-width:58ch;}
+
+.tools li:hover{border-color:var(--periwinkle);}
+
+.tools li.soon{
+  background:transparent;
+  border-style:dashed;
+  padding:1.5rem 1.6rem;
+  color:var(--ink-faint);
+}
+
+.tools li.soon h2{color:var(--ink-faint);}
+
+/* ---------- empty states ---------- */
+
+.empty{
+  padding:3.2rem 0 1rem;
+  max-width:46ch;
+}
+
+.empty h2{
+  font-family:var(--display);
+  font-weight:600;
+  font-size:1.45rem;
+  margin:0 0 .6rem;
+}
+
+.empty p{margin:0 0 1rem;color:var(--ink-soft);}
+
+/* ---------- footer ---------- */
+
+.foot{
+  border-top:1px solid var(--line);
+  padding:1.9rem 0 3rem;
+  font-size:.9rem;
+  color:var(--ink-faint);
+}
+
+.foot a{color:var(--ink-soft);}
+
+/* ---------- shared ---------- */
+
+a:focus-visible{
+  outline:2px solid var(--ink);
+  outline-offset:3px;
+  border-radius:3px;
+}
+
+@media (max-width:560px){
+  .opener{padding:2.6rem 0 2.1rem;}
+  .gallery{columns:2 140px;column-gap:.8rem;}
+  .gallery figure{margin-bottom:.8rem;}
+}
